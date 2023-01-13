@@ -25,10 +25,15 @@ ARCH_FILTER += linux-x86_64
 #
 #     REQUIRED += asyn
 
+REQUIRED += stream
+ifneq ($(strip $(STREAM_DEP_VERSION)),)
+stream_VERSION=$(STREAM_DEP_VERSION)
+endif
+
 # Since this file (pdsgo2.Makefile) is copied into
 # the module directory at build-time, these paths have to be relative
 # to that path
-APP := pdsgo2App
+APP := .
 APPDB := $(APP)/Db
 APPSRC := $(APP)/src
 

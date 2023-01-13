@@ -1,0 +1,35 @@
+# This should be the included snippet to configure and run the deployed IOC. It should be loaded with
+#
+#   iocshLoad("$(pdsgo2_DIR)/pdsgo2.iocsh", "SP=/dev/ttyUSB0"")
+
+#- ###                pnan5221 iocsh                ###
+#- ####################################################
+#- >> Mandatory
+#- SERIAL_PORT  - Serial port to which the dosemeter is connected to
+#- IOCNAME	- Prefix for the asynRec
+#-
+
+
+#-https://epics-modules.github.io/master/asyn/R4-42/asynDriver.html
+#-Specify the TCP endpoint and give your 'bus' an arbitrary name eg. "asynstream1".
+#-drvAsynIPPortConfigure 'port name' 'host:port [protocol]' priority 'disable auto-connect' noProcessEos
+#-drvAsynSerialPortConfigure("portName",
+#-		             "ttyName",
+#-			     priority,
+#-			     noAutoConnect,
+#-        		     noProcessEosIn)
+#-asynSetOption("portName", addr,
+#-		"key", "value")
+
+drvAsynSerialPortConfigure("PORT1","$(SERIAL_PORT)",0,0,0)
+
+
+#Indicate the folder where the protocol file is installed
+epicsEnvSet("STREAM_PROTOCOL_PATH","$(pdsgo2_DB)")
+
+#Load your database defining the EPICS records
+dbLoadRecords("pdsgo2.db", "PORT=PORT1,P=RadProt:PDSGO:")
+
+dbLoadRecords("asynRecord.db","P=$(IOCNAME),R=:asynRec,PORT='PORT1',ADDR='0',IMAX='1024',OMAX='256'")
+asynSetTraceIOMask "PORT1",0,4   # Enable traceIOHex
+#asynSetTraceMask "PORT1",0,9     # Enable traceError and traceIODriver

@@ -1,0 +1,38 @@
+record (longin, "$(P)cnt-1") {
+    field(SCAN, "5 second")
+    field(DTYP, "stream")
+    field(INP, "@pdsgo2.proto get_data($(P)cnt-2,$(P)cnt-3,$(P)cnt-4,$(P)cnt-5,$(P)sDoseRt,$(P)sAccDose,$(P)sStatus) $(PORT)")
+}
+
+record(longin, "$(P)cnt-2") {
+    field(DTYP, "Soft Channel")
+}
+
+record(longin, "$(P)cnt-3") {
+}
+
+record(longin, "$(P)cnt-4") {
+}
+record(longin, "$(P)cnt-5") {
+}
+
+record(ai, "$(P)sDoseRt") {
+}
+
+record(ai, "$(P)sAccDose") {
+}
+
+record(longin, "$(P)sStatus") {
+}
+
+record (calc, "$(P)cnt-sum") {
+    field(SCAN, "5 second")
+    field(INPA, "$(P)cnt-1")
+    field(INPB, "$(P)cnt-2")
+    field(INPC, "$(P)cnt-3")
+    field(INPD, "$(P)cnt-4")
+    field(INPE, "$(P)cnt-5")
+    field(CALC, "A+B+C+D+E")
+}
+
+

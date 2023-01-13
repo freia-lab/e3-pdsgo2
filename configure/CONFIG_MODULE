@@ -5,5 +5,12 @@ E3_MODULE_NAME := pdsgo2
 E3_MODULE_SRC_PATH := $(EPICS_MODULE_NAME)
 E3_MODULE_MAKEFILE := $(E3_MODULE_NAME).Makefile
 
+OPI_VERSION := 1.2.0
+OPI_DIRNAME := radprot-rdsgo
+
+# Dependent module versions
+# For example:
+STREAM_DEP_VERSION:=2.8.22+0
+
 -include $(TOP)/configure/CONFIG_OPTIONS
 -include $(TOP)/configure/CONFIG_MODULE.local
