@@ -5,6 +5,8 @@
 # OS-related
 .DS_Store
 
+# python related
+__pycache__
 # Common e3 artifacts
 *.local
 core.*
