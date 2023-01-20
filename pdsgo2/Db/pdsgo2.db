@@ -1,5 +1,5 @@
 record (longin, "$(P)cnt-1") {
-    field(SCAN, "5 second")
+    field(SCAN, "1 second")
     field(DTYP, "stream")
     field(INP, "@pdsgo2.proto get_data($(P)cnt-2,$(P)cnt-3,$(P)cnt-4,$(P)cnt-5,$(P)sDoseRt,$(P)sAccDose,$(P)sStatus) $(PORT)")
 }

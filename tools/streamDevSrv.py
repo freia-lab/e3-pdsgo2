@@ -12,8 +12,11 @@ from pdsgo2Dev import Pdsgo2Dev
     
 #....callback function to handle the connection on the socket
 class MyHandler(socketserver.StreamRequestHandler):
+    pds = None
+
     def handle(self):
-      pds = Pdsgo2Dev()
+      if self.pds == None:
+        self.pds = Pdsgo2Dev()
       while 1:
         dataReceived = self.rfile.readline() #buffer size in bytes, will split longer messages
         print(dataReceived)
@@ -30,7 +33,7 @@ class MyHandler(socketserver.StreamRequestHandler):
             #ind=1
             #print(ind)
             if res[0]=="#gw":
-                txt = pds.getdata() 
+                txt = self.pds.getdata() 
         except Exception as e:
             print(e)
         

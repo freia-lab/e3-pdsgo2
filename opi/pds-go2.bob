@@ -233,4 +233,16 @@
       <x>100</x>
     </widget>
   </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_10</name>
+    <text>Scan tperiod:</text>
+    <x>270</x>
+    <y>170</y>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>Combo Box</name>
+    <pv_name>$(P)cnt-1.SCAN</pv_name>
+    <x>370</x>
+    <y>170</y>
+  </widget>
 </display>
