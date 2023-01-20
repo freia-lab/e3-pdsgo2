@@ -17,9 +17,13 @@ record(longin, "$(P)cnt-5") {
 }
 
 record(ai, "$(P)sDoseRt") {
+    field(EGU, "µSv/h")
+    field(PREC, "1")
 }
 
 record(ai, "$(P)sAccDose") {
+    field(EGU, "µSv")
+    field(PREC, "1")
 }
 
 record(longin, "$(P)sStatus") {
@@ -33,6 +37,8 @@ record (calc, "$(P)cnt-sum") {
     field(INPD, "$(P)cnt-4")
     field(INPE, "$(P)cnt-5")
     field(CALC, "A+B+C+D+E")
+    field(EGU, "µSv/h")
+    field(PREC, "1")
 }
 
 
