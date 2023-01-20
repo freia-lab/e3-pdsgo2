@@ -7,16 +7,19 @@ import socket
 
 from pdsgo2Dev import Pdsgo2Dev
 
+pds = None
 
 ######################################################################
     
 #....callback function to handle the connection on the socket
 class MyHandler(socketserver.StreamRequestHandler):
-    pds = None
 
     def handle(self):
-      if self.pds == None:
-        self.pds = Pdsgo2Dev()
+      global pds
+      print("pds:",pds)
+      if pds == None:
+        print("Created instance of Pdsgo2Dev")
+        pds = Pdsgo2Dev()
       while 1:
         dataReceived = self.rfile.readline() #buffer size in bytes, will split longer messages
         print(dataReceived)
@@ -33,7 +36,12 @@ class MyHandler(socketserver.StreamRequestHandler):
             #ind=1
             #print(ind)
             if res[0]=="#gw":
-                txt = self.pds.getdata() 
+                txt = pds.getdata() 
+        except usb.core.USBTimeoutError:
+            print("USB time-out")
+        except usb.core.USBError:
+            pds.dev = None
+            print(usb.core.USBError)
         except Exception as e:
             print(e)
         

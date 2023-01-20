@@ -9,6 +9,7 @@ class Pdsgo2Dev:
 
     def init(self, dev):
 #        print(self.dev)
+        print("========== Initializing USB device ===============\n", dev)
         msg = bytearray()
         assert dev.ctrl_transfer(0x41, 0, 0x001, 0, msg) == len(msg)
         msg = bytearray()
@@ -50,15 +51,16 @@ class Pdsgo2Dev:
 
     def getdata(self):
         if self.dev == None:
+            print(self.dev)
             try:
                 self.dev = usb.core.find(idVendor=0x10c4, idProduct=0xea60)
                 self.init(self.dev)
             except:
-                printf("PDSGO2 not connected")
+                print("PDSGO2 not connected")
 
         if self.dev.is_kernel_driver_active(0):
             print('Kernel driver active')
-            dev.detach_kernel_driver(0)
+            self.dev.detach_kernel_driver(0)
             print('Kernel driver detached')
 
         msg = '#gw\n\r'
