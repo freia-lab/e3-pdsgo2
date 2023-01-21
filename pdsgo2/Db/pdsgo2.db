@@ -17,6 +17,8 @@ record(longin, "$(P)cnt-5") {
 }
 
 record(ai, "$(P)sDoseRt") {
+    field(DTYP, "Raw Soft Channel")
+    field(ASLO, "0.01")
     field(EGU, "µSv/h")
     field(PREC, "1")
 }
@@ -36,7 +38,8 @@ record (calc, "$(P)cnt-sum-raw") {
     field(INPC, "$(P)cnt-3")
     field(INPD, "$(P)cnt-4")
     field(INPE, "$(P)cnt-5")
-    field(CALC, "A+B+C+D+E")
+    field(INPF, "100")
+    field(CALC, "(A+B+C+D+E)/F")
     field(EGU, "µSv/h")
     field(PREC, "1")
     field(FLNK, "$(P)sDoseRt-calc")
