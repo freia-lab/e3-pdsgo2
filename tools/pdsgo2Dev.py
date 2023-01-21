@@ -51,17 +51,18 @@ class Pdsgo2Dev:
 
     def getdata(self):
         if self.dev == None:
-            print(self.dev)
             try:
                 self.dev = usb.core.find(idVendor=0x10c4, idProduct=0xea60)
-                self.init(self.dev)
+                if  self.dev != None:
+                     print("PDSGO2 connected")
+                     self.init(self.dev)
+                     if self.dev.is_kernel_driver_active(0):
+                        print('Kernel driver active')
+                        self.dev.detach_kernel_driver(0)
+                        print('Kernel driver detached')
             except:
                 print("PDSGO2 not connected")
 
-        if self.dev.is_kernel_driver_active(0):
-            print('Kernel driver active')
-            self.dev.detach_kernel_driver(0)
-            print('Kernel driver detached')
 
         msg = '#gw\n\r'
         assert self.dev.write(1, msg, 100) == len(msg)
@@ -70,7 +71,6 @@ class Pdsgo2Dev:
             ret = self.dev.read(0x81, 1000, 2000)
             sret = sret+''.join([chr(x) for x in ret])
             if ret[len(ret)-1] == 0xd:
-#                print("last char", ret[len(ret)-1])
                 break
         return sret
 #Rw,     2,     7,     2,     0,     0,   9.8,   8.6,0x00\n\r

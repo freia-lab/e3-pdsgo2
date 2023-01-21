@@ -14,6 +14,11 @@ pds = None
 #....callback function to handle the connection on the socket
 class MyHandler(socketserver.StreamRequestHandler):
 
+    def printtime(self):
+        t = time.localtime()
+        current_time = time.strftime("%Y-%m-%d %H:%M:%S", t)
+        return(current_time)
+
     def handle(self):
       global pds
       print("pds:",pds)
@@ -22,7 +27,7 @@ class MyHandler(socketserver.StreamRequestHandler):
         pds = Pdsgo2Dev()
       while 1:
         dataReceived = self.rfile.readline() #buffer size in bytes, will split longer messages
-        print(dataReceived)
+#        print(dataReceived)
         if not dataReceived: break
         request=dataReceived.decode()
 #        print(request)
@@ -38,14 +43,16 @@ class MyHandler(socketserver.StreamRequestHandler):
             if res[0]=="#gw":
                 txt = pds.getdata() 
         except usb.core.USBTimeoutError:
-            print("USB time-out")
+            print(self.printtime()+" - USB time-out")
         except usb.core.USBError:
             pds.dev = None
-            print(usb.core.USBError)
+            print("USBError:", usb.core.USBError)
+            print("PDSGO2 disconnected")
         except Exception as e:
-            print(e)
+            if pds.dev != None:
+                print(e)
         
-        print(txt)
+#        print(txt)
         self.wfile.write(txt.encode())
 
 # https://stackoverflow.com/a/18858817        

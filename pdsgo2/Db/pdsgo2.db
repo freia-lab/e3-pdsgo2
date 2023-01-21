@@ -29,7 +29,7 @@ record(ai, "$(P)sAccDose") {
 record(longin, "$(P)sStatus") {
 }
 
-record (calc, "$(P)cnt-sum") {
+record (calc, "$(P)cnt-sum-raw") {
     field(SCAN, "5 second")
     field(INPA, "$(P)cnt-1")
     field(INPB, "$(P)cnt-2")
@@ -39,6 +39,14 @@ record (calc, "$(P)cnt-sum") {
     field(CALC, "A+B+C+D+E")
     field(EGU, "µSv/h")
     field(PREC, "1")
+    field(FLNK, "$(P)sDoseRt-calc")
 }
 
+
+record(ai, "$(P)sDoseRt-calc") {
+    field(INP, "$(P)cnt-sum-raw")
+    field(EGU, "µSv/h")
+    field(PREC, "1")
+    field(SMOO, "0.95")
+}
 
