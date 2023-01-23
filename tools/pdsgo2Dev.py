@@ -44,8 +44,11 @@ class Pdsgo2Dev:
         assert self.dev.write(1, msg, 100) == len(msg)
         sret =''
         while True: 
-            ret = self.dev.read(0x81, 1000, 2000)
+            ret = self.dev.read(0x81, 1000, 1500)
             sret = sret+''.join([chr(x) for x in ret])
+            if sret.find('#E') != -1:
+                print(sret.strip()+'\n\r')
+                return sret.strip()+'\n\r'
             if ret[len(ret)-1] == 0xd:
                 break
         return sret

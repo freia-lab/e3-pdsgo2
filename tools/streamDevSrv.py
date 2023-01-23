@@ -44,6 +44,7 @@ class MyHandler(socketserver.StreamRequestHandler):
                 txt = pds.getdata() 
         except usb.core.USBTimeoutError:
             print(self.printtime()+" - USB time-out")
+            txt = "Time-out\n\r"
         except usb.core.USBError:
             pds.dev = None
             print("USBError:", usb.core.USBError)

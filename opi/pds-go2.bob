@@ -196,7 +196,7 @@
       <N>2</N>
     </macros>
     <x>270</x>
-    <y>140</y>
+    <y>100</y>
     <width>200</width>
     <height>20</height>
     <style>3</style>
@@ -270,6 +270,28 @@
       <pv_name>$(P)sDoseRt-calc.SMOO</pv_name>
       <x>220</x>
       <precision>2</precision>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group_10</name>
+    <macros>
+      <N>2</N>
+    </macros>
+    <x>270</x>
+    <y>140</y>
+    <width>200</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>Label_12</name>
+      <text>The last error:</text>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>Text Update_11</name>
+      <pv_name>$(P)sErrStr</pv_name>
+      <x>100</x>
+      <format>4</format>
     </widget>
   </widget>
 </display>

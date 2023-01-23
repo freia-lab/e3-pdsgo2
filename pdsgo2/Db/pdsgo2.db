@@ -1,7 +1,7 @@
 record (longin, "$(P)cnt-1") {
     field(SCAN, "1 second")
     field(DTYP, "stream")
-    field(INP, "@pdsgo2.proto get_data($(P)cnt-2,$(P)cnt-3,$(P)cnt-4,$(P)cnt-5,$(P)sDoseRt,$(P)sAccDose,$(P)sStatus) $(PORT)")
+    field(INP, "@pdsgo2.proto get_data($(P)cnt-2,$(P)cnt-3,$(P)cnt-4,$(P)cnt-5,$(P)sDoseRt,$(P)sAccDose,$(P)sStatus,$(P)sErrStr) $(PORT)")
 }
 
 record(longin, "$(P)cnt-2") {
@@ -54,3 +54,6 @@ record(ai, "$(P)sDoseRt-calc") {
     field(SMOO, "0.95")
 }
 
+record(stringin, "$(P)sErrStr") {
+    field(PINI, "YES")
+}
