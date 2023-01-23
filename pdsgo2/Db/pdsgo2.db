@@ -21,6 +21,7 @@ record(ai, "$(P)sDoseRt") {
     field(ASLO, "0.01")
     field(EGU, "µSv/h")
     field(PREC, "1")
+    field(ADEL, "0.2")
 }
 
 record(ai, "$(P)sAccDose") {
