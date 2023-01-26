@@ -1,7 +1,7 @@
 record (longin, "$(P)cnt-1") {
     field(SCAN, "1 second")
     field(DTYP, "stream")
-    field(INP, "@pdsgo2.proto get_data($(P)cnt-2,$(P)cnt-3,$(P)cnt-4,$(P)cnt-5,$(P)sDoseRt,$(P)sAccDose,$(P)sStatus,$(P)sErrStr) $(PORT)")
+    field(INP, "@pdsgo2.proto get_data($(P)cnt-2,$(P)cnt-3,$(P)cnt-4,$(P)cnt-5,$(P)sDoseRt,$(P)sAvgDoseRt,$(P)sStatus,$(P)sErrStr) $(PORT)")
 }
 
 record(longin, "$(P)cnt-2") {
@@ -24,35 +24,29 @@ record(ai, "$(P)sDoseRt") {
     field(ADEL, "0.2")
 }
 
-record(ai, "$(P)sAccDose") {
-    field(EGU, "µSv")
-    field(PREC, "1")
+record(ai, "$(P)sAvgDoseRt") {
+    field(DTYP, "Raw Soft Channel")
+    field(ASLO, "0.01")
+    field(EGU, "µSv/h")
+    field(PREC, "2")
 }
 
 record(longin, "$(P)sStatus") {
 }
 
-record (calc, "$(P)cnt-sum-raw") {
-    field(SCAN, "5 second")
+record (calc, "$(P)cnt-sum") {
+    field(SCAN, "1 second")
     field(INPA, "$(P)cnt-1")
     field(INPB, "$(P)cnt-2")
     field(INPC, "$(P)cnt-3")
     field(INPD, "$(P)cnt-4")
     field(INPE, "$(P)cnt-5")
-    field(INPF, "100")
+    field(INPF, "1")
     field(CALC, "(A+B+C+D+E)/F")
-    field(EGU, "µSv/h")
-    field(PREC, "1")
-    field(FLNK, "$(P)sDoseRt-calc")
+    field(EGU, "counts")
+    field(PREC, "0")
 }
 
-
-record(ai, "$(P)sDoseRt-calc") {
-    field(INP, "$(P)cnt-sum-raw")
-    field(EGU, "µSv/h")
-    field(PREC, "1")
-    field(SMOO, "0.95")
-}
 
 record(stringin, "$(P)sErrStr") {
     field(PINI, "YES")

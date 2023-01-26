@@ -182,12 +182,13 @@
     <transparent>true</transparent>
     <widget type="label" version="2.0.0">
       <name>Label_7</name>
-      <text>Accum. dose:</text>
+      <text>Avarage:</text>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_6</name>
-      <pv_name>$(P)sAccDose</pv_name>
+      <pv_name>$(P)sAvgDoseRt</pv_name>
       <x>100</x>
+      <precision>2</precision>
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
@@ -229,7 +230,7 @@
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_8</name>
-      <pv_name>$(P)cnt-$(N)-raw</pv_name>
+      <pv_name>$(P)cnt-$(N)</pv_name>
       <x>100</x>
     </widget>
   </widget>
@@ -244,33 +245,6 @@
     <pv_name>$(P)cnt-1.SCAN</pv_name>
     <x>370</x>
     <y>170</y>
-  </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group_9</name>
-    <macros>
-      <N>2</N>
-    </macros>
-    <x>30</x>
-    <y>200</y>
-    <width>330</width>
-    <height>20</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Label_11</name>
-      <text>Dose rate:</text>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_9</name>
-      <pv_name>$(P)sDoseRt-calc</pv_name>
-      <x>100</x>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>Text Entry</name>
-      <pv_name>$(P)sDoseRt-calc.SMOO</pv_name>
-      <x>220</x>
-      <precision>2</precision>
-    </widget>
   </widget>
   <widget type="group" version="2.0.0">
     <name>Group_10</name>
