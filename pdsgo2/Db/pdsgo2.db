@@ -22,6 +22,10 @@ record(ai, "$(P)sDoseRt") {
     field(EGU, "µSv/h")
     field(PREC, "1")
     field(ADEL, "0.2")
+    field(HIGH, "2.0")
+    field(HIHI, "10.0")
+    field(HYST, "2")
+    info (autosaveFields, "HIGH HIHI ADEL HYST")
 }
 
 record(ai, "$(P)sAvgDoseRt") {
@@ -29,6 +33,7 @@ record(ai, "$(P)sAvgDoseRt") {
     field(ASLO, "0.01")
     field(EGU, "µSv/h")
     field(PREC, "2")
+    info (autosaveFields, "HIGH HIHI ADEL HYST")
 }
 
 record(longin, "$(P)sStatus") {
@@ -45,6 +50,8 @@ record (calc, "$(P)cnt-sum") {
     field(CALC, "(A+B+C+D+E)/F")
     field(EGU, "counts")
     field(PREC, "0")
+    field(SDIS, "$(P)cnt-1.VAL NPP MS")
+    field(DISV, "-1") # Will never disable, but will propagate severity
 }
 
 

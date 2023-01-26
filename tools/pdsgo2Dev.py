@@ -10,16 +10,12 @@ class Pdsgo2Dev:
     def init(self, dev):
 #        print(self.dev)
         print("========== Initializing USB device ===============\n", dev)
-        msg = bytearray()
-        assert dev.ctrl_transfer(0x41, 0, 0x001, 0, msg) == len(msg)
+        assert dev.ctrl_transfer(0x41, 0, 0x001, 0, None) == 0
         msg = bytearray([0,0xc2,1,0])
         assert dev.ctrl_transfer(0x41, 30, 0, 4, msg) == len(msg)
-        msg = bytearray()
-        assert dev.ctrl_transfer(0x41, 7, 0x0200, 0, msg) == len(msg)
-        msg = bytearray()
-        assert dev.ctrl_transfer(0x41, 7, 0x0100, 0, msg) == len(msg)
-        msg = bytearray()
-        assert dev.ctrl_transfer(0x41, 3, 0x0800, 0, msg) == len(msg)
+        assert dev.ctrl_transfer(0x41, 7, 0x0200, 0, None) == 0
+        assert dev.ctrl_transfer(0x41, 7, 0x0100, 0, None) == 0
+        assert dev.ctrl_transfer(0x41, 3, 0x0800, 0, None) == 0
         msg = bytearray([0x1a,0,0,0x1a,0x11,0x13])
         assert dev.ctrl_transfer(0x41, 25, 0, 6, msg) == len(msg)
         msg = bytearray([0,0,0,0,0,0,0,0,0x80,0,0,0,0x80,0,0,0])
