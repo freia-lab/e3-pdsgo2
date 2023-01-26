@@ -6,10 +6,37 @@ OutTerminator = LF;
 ReplyTimeout = 2000;
 #ReadTimeout = 500;
 
-get_data {
+get_dose-rate {
    out "#gw";
-   in "#Rw, %d,%(\$1)d,%(\$2)d,%(\$3)d,%(\$4)d,%(\$5.RVAL)f, %(\$6.RVAL)f,%(\$7)i";
+   in "#Rw, %*d,%*d,%*d,%*d,%*d,%f,%*f,%*i";
    @mismatch {
-       in "%(\$8)s";
+       in "%(\$1)s";
    }
 }
+
+get_cnt-1 {
+   in "#Rw, %d,%*d,%*d,%*d,%*d,%*f,%*f,%*i";
+}
+get_cnt-2 {
+   in "#Rw, %*d,%d,%*d,%*d,%*d,%*f,%*f,%*i";
+}
+get_cnt-3 {
+   in "#Rw, %*d,%*d,%d,%*d,%*d,%*f,%*f,%*i";
+}
+get_cnt-4 {
+   in "#Rw, %*d,%*d,%*d,%d,%*d,%*f,%*f,%*i";
+}
+get_cnt-5 {
+   in "#Rw, %*d,%*d,%*d,%*d,%d,%*f,%*f,%*i";
+}
+
+get_status {
+   in "#Rw, %*d,%*d,%*d,%*d,%*d,%*f,%*f,%i";
+}
+
+get_avg-dose-rate {
+   in "#Rw, %*d,%*d,%*d,%*d,%*d,%*f,%f,%*i";
+}
+
+
+

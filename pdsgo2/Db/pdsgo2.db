@@ -1,42 +1,69 @@
-record (longin, "$(P)cnt-1") {
+record(ai, "$(P)sDoseRt") {
     field(SCAN, "1 second")
     field(DTYP, "stream")
-    field(INP, "@pdsgo2.proto get_data($(P)cnt-2,$(P)cnt-3,$(P)cnt-4,$(P)cnt-5,$(P)sDoseRt,$(P)sAvgDoseRt,$(P)sStatus,$(P)sErrStr) $(PORT)")
-}
-
-record(longin, "$(P)cnt-2") {
-    field(DTYP, "Soft Channel")
-}
-
-record(longin, "$(P)cnt-3") {
-}
-
-record(longin, "$(P)cnt-4") {
-}
-record(longin, "$(P)cnt-5") {
-}
-
-record(ai, "$(P)sDoseRt") {
-    field(DTYP, "Raw Soft Channel")
+    field(INP, "@pdsgo2.proto get_dose-rate($(P)sErrStr) $(PORT)")
     field(ASLO, "0.01")
     field(EGU, "µSv/h")
     field(PREC, "1")
     field(ADEL, "0.2")
     field(HIGH, "2.0")
+    field(HSV, "MINOR")
     field(HIHI, "10.0")
+    field(HHSV, "MAJOR")
     field(HYST, "2")
     info (autosaveFields, "HIGH HIHI ADEL HYST")
 }
 
+record (longin, "$(P)cnt-1") {
+    field(SCAN, "I/O Intr")
+    field(DTYP, "stream")
+    field(INP, "@pdsgo2.proto get_cnt-1 $(PORT)")
+}
+
+record (longin, "$(P)cnt-2") {
+    field(SCAN, "I/O Intr")
+    field(DTYP, "stream")
+    field(INP, "@pdsgo2.proto get_cnt-2 $(PORT)")
+}
+
+record (longin, "$(P)cnt-3") {
+    field(SCAN, "I/O Intr")
+    field(DTYP, "stream")
+    field(INP, "@pdsgo2.proto get_cnt-3 $(PORT)")
+}
+
+record (longin, "$(P)cnt-4") {
+    field(SCAN, "I/O Intr")
+    field(DTYP, "stream")
+    field(INP, "@pdsgo2.proto get_cnt-4 $(PORT)")
+}
+
+record (longin, "$(P)cnt-5") {
+    field(SCAN, "I/O Intr")
+    field(DTYP, "stream")
+    field(INP, "@pdsgo2.proto get_cnt-5 $(PORT)")
+}
+
+
 record(ai, "$(P)sAvgDoseRt") {
-    field(DTYP, "Raw Soft Channel")
+    field(SCAN, "I/O Intr")
+    field(DTYP, "stream")
+    field(INP, "@pdsgo2.proto get_avg-dose-rate $(PORT)")
     field(ASLO, "0.01")
     field(EGU, "µSv/h")
     field(PREC, "2")
+    field(HIGH, "2.0")
+    field(HSV, "MINOR")
+    field(HIHI, "10.0")
+    field(HHSV, "MAJOR")
+    field(HYST, "2")
     info (autosaveFields, "HIGH HIHI ADEL HYST")
 }
 
 record(longin, "$(P)sStatus") {
+    field(SCAN, "I/O Intr")
+    field(DTYP, "stream")
+    field(INP, "@pdsgo2.proto get_status $(PORT)")
 }
 
 record (calc, "$(P)cnt-sum") {
@@ -50,7 +77,7 @@ record (calc, "$(P)cnt-sum") {
     field(CALC, "(A+B+C+D+E)/F")
     field(EGU, "counts")
     field(PREC, "0")
-    field(SDIS, "$(P)cnt-1.VAL NPP MS")
+    field(SDIS, "$(P)sDoseRt.VAL NPP MS")
     field(DISV, "-1") # Will never disable, but will propagate severity
 }
 

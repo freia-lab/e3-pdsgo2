@@ -38,8 +38,8 @@
         <description>Asyn Record...</description>
       </action>
     </actions>
-    <x>600</x>
-    <y>500</y>
+    <x>540</x>
+    <y>200</y>
     <width>150</width>
     <tooltip>$(actions)</tooltip>
   </widget>
@@ -156,17 +156,26 @@
     <x>270</x>
     <y>60</y>
     <width>200</width>
-    <height>20</height>
+    <height>40</height>
     <style>3</style>
     <transparent>true</transparent>
     <widget type="label" version="2.0.0">
       <name>Label_6</name>
       <text>Dose rate:</text>
+      <y>10</y>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_5</name>
       <pv_name>$(P)sDoseRt</pv_name>
-      <x>100</x>
+      <x>80</x>
+      <y>5</y>
+      <width>120</width>
+      <height>30</height>
+      <font>
+        <font name="LARGE-SANS-BOLD" family="Source Sans Pro" style="BOLD" size="21.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
@@ -175,20 +184,29 @@
       <N>2</N>
     </macros>
     <x>270</x>
-    <y>80</y>
+    <y>160</y>
     <width>200</width>
-    <height>20</height>
+    <height>40</height>
     <style>3</style>
     <transparent>true</transparent>
     <widget type="label" version="2.0.0">
       <name>Label_7</name>
       <text>Avarage:</text>
+      <y>10</y>
     </widget>
     <widget type="textupdate" version="2.0.0">
       <name>Text Update_6</name>
       <pv_name>$(P)sAvgDoseRt</pv_name>
-      <x>100</x>
+      <x>70</x>
+      <y>5</y>
+      <width>130</width>
+      <height>30</height>
+      <font>
+        <font name="LARGE-SANS-BOLD" family="Source Sans Pro" style="BOLD" size="21.0">
+        </font>
+      </font>
       <precision>2</precision>
+      <horizontal_alignment>2</horizontal_alignment>
     </widget>
   </widget>
   <widget type="group" version="2.0.0">
@@ -196,8 +214,8 @@
     <macros>
       <N>2</N>
     </macros>
-    <x>270</x>
-    <y>100</y>
+    <x>30</x>
+    <y>220</y>
     <width>200</width>
     <height>20</height>
     <style>3</style>
@@ -237,35 +255,91 @@
   <widget type="label" version="2.0.0">
     <name>Label_10</name>
     <text>Scan tperiod:</text>
-    <x>270</x>
-    <y>170</y>
+    <x>490</x>
+    <y>60</y>
   </widget>
   <widget type="combo" version="2.0.0">
     <name>Combo Box</name>
-    <pv_name>$(P)cnt-1.SCAN</pv_name>
-    <x>370</x>
-    <y>170</y>
+    <pv_name>$(P)sDoseRt.SCAN</pv_name>
+    <x>590</x>
+    <y>60</y>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
-  <widget type="group" version="2.0.0">
-    <name>Group_10</name>
-    <macros>
-      <N>2</N>
-    </macros>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>The last error:</text>
+    <x>30</x>
+    <y>200</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_11</name>
+    <pv_name>$(P)sErrStr</pv_name>
+    <x>130</x>
+    <y>200</y>
+    <format>4</format>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_13</name>
+    <text>HIGH:</text>
     <x>270</x>
-    <y>140</y>
-    <width>200</width>
-    <height>20</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>Label_12</name>
-      <text>The last error:</text>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>Text Update_11</name>
-      <pv_name>$(P)sErrStr</pv_name>
-      <x>100</x>
-      <format>4</format>
-    </widget>
+    <y>100</y>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_1</name>
+    <pv_name>$(P)sDoseRt.HIGH</pv_name>
+    <x>370</x>
+    <y>100</y>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_14</name>
+    <text>HIHI:</text>
+    <x>270</x>
+    <y>120</y>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_2</name>
+    <pv_name>$(P)sDoseRt.HIHI</pv_name>
+    <x>370</x>
+    <y>120</y>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_15</name>
+    <text>HIGH:</text>
+    <x>270</x>
+    <y>200</y>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_3</name>
+    <pv_name>$(P)sAvgDoseRt.HIGH</pv_name>
+    <x>370</x>
+    <y>200</y>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_16</name>
+    <text>HIHI:</text>
+    <x>270</x>
+    <y>220</y>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry_4</name>
+    <pv_name>$(P)sAvgDoseRt.HIHI</pv_name>
+    <x>370</x>
+    <y>220</y>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="databrowser" version="2.0.0">
+    <name>Data Browser</name>
+    <file>plots/pds-go.plt</file>
+    <x>30</x>
+    <y>250</y>
+    <width>670</width>
+    <height>340</height>
   </widget>
 </display>
