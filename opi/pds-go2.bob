@@ -4,6 +4,7 @@
   <macros>
     <P>RadProt:PDSGO:</P>
   </macros>
+  <width>720</width>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -24,24 +25,6 @@
     <horizontal_alignment use_class="true">0</horizontal_alignment>
     <vertical_alignment use_class="true">1</vertical_alignment>
     <wrap_words use_class="true">false</wrap_words>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button</name>
-    <actions>
-      <action type="open_display">
-        <file>../freia-symbols/display-builder/asyn/asynRecord.bob</file>
-        <macros>
-          <P>ioc05-pdsgo2:</P>
-          <R>asynRec</R>
-        </macros>
-        <target>window</target>
-        <description>Asyn Record...</description>
-      </action>
-    </actions>
-    <x>540</x>
-    <y>200</y>
-    <width>150</width>
-    <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="group" version="2.0.0">
     <name>Group</name>
@@ -341,5 +324,54 @@
     <y>250</y>
     <width>670</width>
     <height>340</height>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>Group</name>
+    <macros>
+      <P>ioc05-pdsgo2:</P>
+      <R>asynRec</R>
+    </macros>
+    <x>540</x>
+    <y>130</y>
+    <width>150</width>
+    <height>100</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>Action Button</name>
+      <actions>
+        <action type="open_display">
+          <file>../freia-symbols/display-builder/asyn/asynRecord.bob</file>
+          <macros>
+            <P>ioc05-pdsgo2:</P>
+            <R>asynRec</R>
+          </macros>
+          <target>window</target>
+          <description>Asyn Record...</description>
+        </action>
+      </actions>
+      <y>70</y>
+      <width>150</width>
+      <tooltip>$(actions)</tooltip>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>Combo Box_1</name>
+      <pv_name>$(P)$(R).HOSTINFO</pv_name>
+      <y>30</y>
+      <width>150</width>
+      <items>
+        <item>nuc-03:1140</item>
+        <item>nuc-07:1140</item>
+        <item>nuc-01:1140</item>
+      </items>
+      <items_from_pv>false</items_from_pv>
+      <editable>true</editable>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>Label_11</name>
+      <text>RDS-GO connected to:</text>
+      <y>5</y>
+      <width>150</width>
+    </widget>
   </widget>
 </display>
