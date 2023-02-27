@@ -328,7 +328,7 @@
   <widget type="group" version="2.0.0">
     <name>Group</name>
     <macros>
-      <P>ioc05-pdsgo2:</P>
+      <P>ioc15-pdsgo2:</P>
       <R>asynRec</R>
     </macros>
     <x>540</x>
@@ -343,7 +343,7 @@
         <action type="open_display">
           <file>../freia-symbols/display-builder/asyn/asynRecord.bob</file>
           <macros>
-            <P>ioc05-pdsgo2:</P>
+            <P>ioc15-pdsgo2:</P>
             <R>asynRec</R>
           </macros>
           <target>window</target>
